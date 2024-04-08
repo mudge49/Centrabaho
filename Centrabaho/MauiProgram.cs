@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using UraniumUI;
 
 namespace Centrabaho
 {
@@ -13,7 +14,9 @@ namespace Centrabaho
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseUraniumUI()
+                .UseUraniumUIMaterial();
 
 #if DEBUG
     		builder.Logging.AddDebug();
