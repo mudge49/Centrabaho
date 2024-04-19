@@ -22,8 +22,6 @@ public class LoginViewModel : INotifyPropertyChanged
     {
         LoginCommand = new Command(PerformLoginOperation);
 
-
-
     }
 
     private async void PerformLoginOperation(object obj)

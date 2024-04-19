@@ -1,18 +1,81 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible = "False"
              x:Class="Centrabaho.Views.ContentPages.LoginPage"
-             Title="LoginPage">
-    <VerticalStackLayout VerticalOptions="Center">
-        
-        <Entry Placeholder="Username" Text="{Binding MyLoginRequestModel.UserName}">
-        </Entry>
+             Title="LoginPage"
+             BackgroundColor="White">
 
-        <Entry Placeholder="Password" Text="{Binding MyLoginRequestModel.Password}">
-        </Entry>
+    <Grid Padding="30"
+          HorizontalOptions="Fill"
+          VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button Text="Login" BackgroundColor="Black" TextColor="White" Command="{Binding LoginCommand}"/>
+        <!-- Sign In Card -->
+        <Frame Grid.Row="1"
+               BackgroundColor="#EDEDED"
+               CornerRadius="10"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               WidthRequest="300"
+               HeightRequest="350"
+               Padding="20">
+            <Grid RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
 
-    </VerticalStackLayout>
+                <!-- Title Label -->
+                <Label Grid.Row="0"
+                       Text="Sign In"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large"/>
+
+                <!-- Username Entry -->
+                <Entry Grid.Row="1"
+                       x:Name="emailEntry"
+                       BackgroundColor="#D9D9D9"
+                       PlaceholderColor="#858585"
+                       Placeholder="Email"/>
+
+                <!-- Password Entry -->
+                <Entry Grid.Row="2"
+                       x:Name="passwordEntry"
+                       BackgroundColor="#D9D9D9"
+                       PlaceholderColor="#858585"
+                       Placeholder="Password"
+                       IsPassword="True"/>
+                
+
+                <!-- Login Button -->
+                <Button Grid.Row="3"
+                        x:Name="loginBtn"
+                        Text="Login"
+                        Margin="0,20,0,0"/>
+
+                <!-- Create Account Label -->
+                <Label Grid.Row="4"
+                       x:Name="registerBtn"
+                       Text="Create new account"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Margin="0,5,0,0"
+                       TextDecorations="Underline"/>
+                
+            </Grid>
+        </Frame>
+    </Grid>
 </ContentPage>
