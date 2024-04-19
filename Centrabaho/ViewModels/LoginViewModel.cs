@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Centrabaho.Models;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Centrabaho.ViewModels;

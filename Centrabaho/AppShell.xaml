@@ -9,8 +9,8 @@
     Title="Centrabaho">
 
     <ShellContent
-        Title="LoginPage"
-        ContentTemplate="{DataTemplate pages:LoginPage}"
-        Route="loginpage" />
+        Title="SignUpPage"
+        ContentTemplate="{DataTemplate pages:SignUpPage}"
+        Route="signuppage" />
 
 </Shell>

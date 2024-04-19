@@ -1,4 +1,4 @@
-﻿namespace Centrabaho;
+﻿namespace Centrabaho.Models;
 
 public class LoginRequestModel
 {

@@ -1,9 +1,11 @@
 namespace Centrabaho.Views.ContentPages;
 
-public partial class SignupPage : ContentPage
+public partial class SignUpPage : ContentPage
 {
-	public SignupPage()
-	{
-		InitializeComponent();
-	}
+	public SignUpPage(object bindingContext)
+    {
+        InitializeComponent();
+
+        BindingContext = bindingContext;
+    }
 }
