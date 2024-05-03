@@ -3,13 +3,23 @@
     x:Class="Centrabaho.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Centrabaho"
+    xmlns:local="clr-namespace:Centrabaho.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="Centrabaho">
 
     <ShellContent
-        Title="Home"
+        Title="MainPage"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="mainpage" />
+
+    <ShellContent
+        Title="LoginPage"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="loginpage" />
+
+    <ShellContent
+        Title="RegisterPage"
+        ContentTemplate="{DataTemplate local:RegisterPage}"
+        Route="registerpage" />
 
 </Shell>

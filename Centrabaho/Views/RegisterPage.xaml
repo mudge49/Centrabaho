@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Centrabaho.ViewModels"
+             Shell.NavBarIsVisible="False"
+             x:Class="Centrabaho.Views.RegisterPage"
+             Title="RegisterPage">
+
+    <ContentPage.BindingContext>
+        <local:RegisterViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout Padding="10" VerticalOptions="CenterAndExpand">
+        <Label Text="Create an Account" HorizontalOptions="CenterAndExpand" FontSize="Large" Margin="0,0,0,25"/>
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Entry Grid.Column="0" 
+                   Placeholder="FirstName" 
+                   Text="{Binding FirstName}"  
+                   PlaceholderColor="Black"
+                   MinimumWidthRequest="150"/>
+
+            <Entry Grid.Column="1" 
+                   Placeholder="LastName" 
+                   Text="{Binding LastName}"  
+                   PlaceholderColor="Black"
+                   MinimumWidthRequest="150"/>
+        </Grid>
+        
+        <Entry Placeholder="Username"
+               HorizontalOptions="CenterAndExpand"
+               Text="{Binding Username}"
+               MinimumWidthRequest="300"
+               PlaceholderColor="Black"/>
+        
+        <Entry Placeholder="Email" 
+               HorizontalOptions="CenterAndExpand"
+               MinimumWidthRequest="300"
+               Text="{Binding Email}"  
+               PlaceholderColor="Black"/>
+
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Password" 
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   MinimumWidthRequest="255"
+                   IsPassword="True"
+                   Text="{Binding Password}"  
+                   PlaceholderColor="Black"/>
+            
+            <Button x:Name="passwordBtn"
+                         Grid.Column="1"
+                         Grid.Row="0"
+                         BorderWidth="1"
+                         BorderColor="Black"
+                         BackgroundColor="Transparent"
+                         ImageSource="password_hidden.png"
+                         Clicked="passwordBtn_Clicked"/>
+
+            <Entry x:Name="confirmPasswordEntry"
+                   Placeholder="Confirm Password" 
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   MinimumWidthRequest="255"
+                   IsPassword="True"
+                   Text="{Binding ConfirmPassword}"  
+                   PlaceholderColor="Black"/>
+
+            <Button x:Name="confirmPasswordBtn"
+                         Grid.Column="1"
+                         Grid.Row="1"
+                         ImageSource="password_hidden.png"
+                         BorderWidth="1"
+                         BorderColor="Black"
+                         BackgroundColor="Transparent"
+                         Clicked="confirmPasswordBtn_Clicked"/>
+        </Grid>
+
+
+        <Button Text="Sign Up" 
+                MinimumWidthRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                Command="{Binding RegisterCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>
