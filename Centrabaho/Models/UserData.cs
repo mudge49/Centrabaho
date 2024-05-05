@@ -4,7 +4,7 @@ using TableAttribute = SQLite.TableAttribute;
 
 namespace Centrabaho.Models
 {
-    [Table("user")]
+    [Table("UserData")]
     public class UserData
     {
         [PrimaryKey]

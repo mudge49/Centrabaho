@@ -1,9 +1,13 @@
+using Centrabaho.ViewModels;
+
 namespace Centrabaho.Views;
 
 public partial class LoginPage : ContentPage
 {
 	public LoginPage()
 	{
+        var viewmodel = new LoginViewModel();
+        BindingContext = viewmodel;
 		InitializeComponent();
 	}
 
@@ -13,8 +17,21 @@ public partial class LoginPage : ContentPage
 		navigateTo("registerpage");
     }
 
-	//Navigation Command
-	private async Task navigateTo(string path)
+    //Toggle password visibility
+    private void passwordBtn_Clicked(object sender, EventArgs e)
+    {
+        if (passwordEntry.IsPassword)
+        {
+            passwordEntry.IsPassword = false;
+            passwordBtn.ImageSource = "password_shown.png";
+            return;
+        }
+        passwordEntry.IsPassword = true;
+        passwordBtn.ImageSource = "password_hidden.png";
+    }
+
+    //Navigation Command
+    private async Task navigateTo(string path)
 	{
 		await Shell.Current.GoToAsync(path);
 	}

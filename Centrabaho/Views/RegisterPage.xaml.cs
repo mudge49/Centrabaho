@@ -31,4 +31,15 @@ public partial class RegisterPage : ContentPage
         confirmPasswordEntry.IsPassword = true;
         confirmPasswordBtn.ImageSource = "password_hidden.png";
     }
+
+    private void login_hyperlink(object sender, EventArgs e)
+    {
+        navigateTo("..");
+    }
+
+    //Navigation Command
+    private async Task navigateTo(string path)
+	{
+		await Shell.Current.GoToAsync(path);
+	}
 }

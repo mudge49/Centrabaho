@@ -6,38 +6,58 @@
              x:Class="Centrabaho.Views.LoginPage"
              Title="LoginPage">
 
-    <!--<ContentPage.BindingContext>
+    <ContentPage.BindingContext>
         <local:LoginViewModel />
-    </ContentPage.BindingContext>-->
+    </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="20" VerticalOptions="Center">
+    <VerticalStackLayout Padding="10" VerticalOptions="CenterAndExpand">
         
         <Label Text="Log in"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"
                FontAttributes="Bold"
-               FontSize="Large"
+               FontSize="Title"
                Margin="0,0,0,25"/>
         
         <Entry Placeholder="Email"
-               MinimumWidthRequest="250" 
+               MinimumWidthRequest="300" 
                HorizontalOptions="CenterAndExpand"
+               PlaceholderColor="Black"
                VerticalOptions="CenterAndExpand"
-               Text="{Binding email}"
+               Text="{Binding Email}"
                Keyboard="Email" />
+        <Grid Margin="0,10,0,0" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-        <Entry Placeholder="Password"
-               MinimumWidthRequest="250"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"
-               Text="{Binding password}"
-               IsPassword="true" 
-               Margin="0,0,0,25"/>
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Password"
+                   MinimumWidthRequest="260"
+                   PlaceholderColor="Black"
+                   Grid.Column="0"
+                   Text="{Binding Password}"
+                   IsPassword="true" 
+                   Margin="0,0,0,25"/>
+            
+            <Button x:Name="passwordBtn"
+                    Grid.Column="1"
+                    BorderWidth="1"
+                    BorderColor="Black"
+                    VerticalOptions="Start"
+                    BackgroundColor="Transparent"
+                    ImageSource="password_hidden.png"
+                    Clicked="passwordBtn_Clicked"/>
+            
+        </Grid>
+            
         <Button Text="Sign In"
                 MinimumWidthRequest="150"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
-                Command="{Binding SignInCommand}" />
+                Command="{Binding SignInCommand}"
+                Margin="0,0,0,10"/>
         <Label Text="Register Here"
                TextColor="Blue"
                TextDecorations="Underline"

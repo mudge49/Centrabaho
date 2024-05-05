@@ -67,6 +67,7 @@
                          Grid.Row="0"
                          BorderWidth="1"
                          BorderColor="Black"
+                         VerticalOptions="Center"
                          BackgroundColor="Transparent"
                          ImageSource="password_hidden.png"
                          Clicked="passwordBtn_Clicked"/>
@@ -93,8 +94,19 @@
 
         <Button Text="Sign Up" 
                 MinimumWidthRequest="150"
+                Margin="0,20,0,10"
                 HorizontalOptions="CenterAndExpand"
                 Command="{Binding RegisterCommand}"/>
+
+        <Label Text="Already Registered?"
+               TextColor="Blue"
+               TextDecorations="Underline"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="login_hyperlink"/>
+            </Label.GestureRecognizers>
+        </Label>
 
     </VerticalStackLayout>
 </ContentPage>

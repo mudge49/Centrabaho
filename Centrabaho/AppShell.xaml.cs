@@ -8,9 +8,12 @@ namespace Centrabaho
         {
             InitializeComponent();
 
-            Routing.RegisterRoute("mainpage", typeof(MainPage));
+            Routing.RegisterRoute("homepage", typeof(HomePage));
             Routing.RegisterRoute("loginpage", typeof(LoginPage));
             Routing.RegisterRoute("registerpage", typeof(RegisterPage));
+            Routing.RegisterRoute("createpostpage", typeof(CreatePostPage));
+            Routing.RegisterRoute("adminpage", typeof(AdminPage));
+
         }
     }
 }

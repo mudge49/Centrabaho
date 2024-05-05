@@ -129,7 +129,7 @@ namespace Centrabaho.ViewModels
             }
             else
             {
-                await Shell.Current.DisplayAlert("Error", "Password does not match", "Okay");
+                await Shell.Current.DisplayAlert("Error", "Password does not match" + FileSystem.AppDataDirectory, "Okay");
             }
 
         }
