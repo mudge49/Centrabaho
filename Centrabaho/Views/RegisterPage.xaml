@@ -43,6 +43,12 @@
                Text="{Binding Email}"  
                PlaceholderColor="Black"/>
 
+        <Entry Placeholder="Contact Number" 
+               HorizontalOptions="CenterAndExpand"
+               MinimumWidthRequest="300"
+               Text="{Binding ContactNumber}"  
+               PlaceholderColor="Black"/>
+
         <Grid HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

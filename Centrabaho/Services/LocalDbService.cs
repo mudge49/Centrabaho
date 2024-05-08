@@ -41,10 +41,21 @@ namespace Centrabaho.Services
             return await _connect.Table<UserData>().ToListAsync();
         }
 
-        //Returns a specific user from their ID
+        //Returns a specific user from their userID
         public async Task<UserData> GetUserById(int id)
         {
             return await _connect.Table<UserData>().Where(x => x.UserId == id).FirstOrDefaultAsync();
+        }
+
+        //
+        public async Task<List<PostData>> GetPostsByUserId(int userid)
+        {
+            return await _connect.Table<PostData>().Where(x => x.UserId == userid).ToListAsync();
+        }
+
+        public async Task<PostData> GetPostByPostId(int postid)
+        {
+            return await _connect.Table<PostData>().Where(x => x.UserId == postid).FirstOrDefaultAsync();
         }
 
         //Updates user record
@@ -60,13 +71,19 @@ namespace Centrabaho.Services
         }
 
         //Deletes user record
-        public async Task Delete(UserData user)
+        public async Task DeleteUser(UserData user)
         {
+            var userPosts = await GetPostsByUserId(user.UserId);
             await _connect.DeleteAsync(user);
+            foreach(var post in userPosts)
+            {
+                await _connect.DeleteAsync(post.PostId);
+            }
+            
         }
 
         //Deletes post record
-        public async Task Delete(PostData post)
+        public async Task DeletePost(PostData post)
         {
             await _connect.DeleteAsync(post);
         }
@@ -75,6 +92,7 @@ namespace Centrabaho.Services
         public async Task DeleteAllUsers()
         {
             await _connect.DeleteAllAsync<UserData>();
+            await _connect.DeleteAllAsync<PostData>();
         }
 
         //Deletes all posts in the database. Admin only
@@ -84,11 +102,11 @@ namespace Centrabaho.Services
         }
 
         //Authenticates Login Credentials
-        public async Task<UserData> AuthenticateUser(string email, string password)
+        public async Task<UserData> AuthenticateUser(string username, string password)
         {
 
             var authenticate = await _connect.Table<UserData>()
-                                 .Where(user => user.Email == email && user.Password == password)
+                                 .Where(user => user.Username == username && user.Password == password)
                                  .FirstOrDefaultAsync();
             if(authenticate != null)
             {

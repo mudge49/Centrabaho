@@ -28,6 +28,8 @@ namespace Centrabaho.Models
         [Column("timestamp")]
         public DateTime Timestamp { get; set; }
 
+        public string ProfilePictureUrl { get; set; }
+
         public string Username {  get; set; }
     }
 }

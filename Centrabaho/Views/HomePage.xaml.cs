@@ -1,4 +1,5 @@
 ﻿using Centrabaho.ViewModels;
+using System.Xml.Serialization;
 
 namespace Centrabaho.Views
 {
@@ -17,7 +18,7 @@ namespace Centrabaho.Views
             await Shell.Current.GoToAsync(url);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void createpostBtn(object sender, EventArgs e)
         {
             _ = navigateTo("createpostpage");
         }

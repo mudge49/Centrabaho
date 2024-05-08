@@ -17,6 +17,9 @@ namespace Centrabaho
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("TheBoldFont.ttf", "TheBoldFont-ttf");
+                fonts.AddFont("TheBoldFont.otf", "TheBoldFont-otf");
+
             }).UseMauiCommunityToolkit();
             builder.Services.AddSingleton<LocalDbService>();
 

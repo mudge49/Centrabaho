@@ -19,12 +19,12 @@
                FontSize="Title"
                Margin="0,0,0,25"/>
         
-        <Entry Placeholder="Email"
+        <Entry Placeholder="Username"
                MinimumWidthRequest="300" 
                HorizontalOptions="CenterAndExpand"
                PlaceholderColor="Black"
                VerticalOptions="CenterAndExpand"
-               Text="{Binding Email}"
+               Text="{Binding Username}"
                Keyboard="Email" />
         <Grid Margin="0,10,0,0" HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>

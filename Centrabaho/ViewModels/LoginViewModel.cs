@@ -5,15 +5,15 @@ namespace Centrabaho.ViewModels
 {
     public class LoginViewModel : BindableObject
     {
-        private string _email;
+        private string _username;
         private string _password;
 
-        public string Email
+        public string Username
         {
-            get => _email;
+            get => _username;
             set
             {
-                _email = value;
+                _username = value;
                 OnPropertyChanged();
             }
         }
@@ -34,16 +34,24 @@ namespace Centrabaho.ViewModels
         public LoginViewModel()
         {
             SignInCommand = new Command(OnSignIn);
+            if(_password != null || _password != string.Empty)
+            {
+                _password = string.Empty;
+            }
+
+            if(_username != null || _username != string.Empty)
+            {
+                _username = string.Empty;
+            }
         }
 
         //Signing-In authentication. Exectued after button click
         private async void OnSignIn()
         {
-            var authenticatedUser = await new LocalDbService().AuthenticateUser(Email, Password);
+            var authenticatedUser = await new LocalDbService().AuthenticateUser(Username, Password);
 
             if (authenticatedUser != null)
             {
-                await Shell.Current.DisplayAlert("Success", "Login Successful", "Okay");
                 await Shell.Current.GoToAsync("homepage");
             }
             else

@@ -19,10 +19,14 @@ namespace Centrabaho.ViewModels
             BindableProperty.Create(nameof(Posts), typeof(ObservableCollection<PostData>), typeof(HomeViewModel), new ObservableCollection<PostData>());
 
         public ICommand HomeCommand { get; private set; }
+        public ICommand SignOutCommand { get;}
+        public ICommand GoToPostDetailCommand { get; private set; }
 
         public HomeViewModel()
         {
             HomeCommand = new Command(async () => await LoadPosts());
+            SignOutCommand = new Command(async () => await OnLogout());
+            GoToPostDetailCommand = new Command<int>(async (postId) => await ViewPost(postId));
         }
 
 
@@ -34,9 +38,21 @@ namespace Centrabaho.ViewModels
             foreach (var post in posts)
             {
                 var user = await new LocalDbService().GetUserById(post.UserId);
-                post.Username = user.Username;
+                post.Username = user?.Username ?? "Unknown User";
+                post.ProfilePictureUrl = user?.ProfileImageUrl ?? "sampleprofile.png";
                 Posts.Add(post);
             }
+        }
+
+        public async Task OnLogout()
+        {
+            App.CurrentUserId = 0;
+            await Shell.Current.GoToAsync("//loginpage"); // Adjust the route based on your routing setup
+        }
+
+        public async Task ViewPost(int postId)
+        {
+            await Shell.Current.GoToAsync($"postdetailspage?PostId={postId}");
         }
     }
 }

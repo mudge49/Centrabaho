@@ -27,6 +27,12 @@ namespace Centrabaho.Models
         [Column("password")]
         public string Password { get; set; }
 
+        [Column("contactNumber")]
+        public string ContactNumber { get; set; }
+
+        [Column("imageUrl")]
+        public string ProfileImageUrl { get; set; }
+
         public string FullName
         {
             get

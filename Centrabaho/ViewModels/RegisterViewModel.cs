@@ -70,6 +70,20 @@ namespace Centrabaho.ViewModels
             }
         }
 
+        private string _contactNumber;
+        public string ContactNumber
+        {
+            get
+            {
+                return _contactNumber;
+            }
+            set
+            {
+                _contactNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _password;
         public string Password 
         { 
@@ -114,6 +128,8 @@ namespace Centrabaho.ViewModels
                 await Shell.Current.DisplayAlert("Error", "Please input a password", "Okay");
                 return;
             }
+
+
             else if (_password == _confirmPassword)
             {
                 await new LocalDbService().Create(new UserData
@@ -122,7 +138,9 @@ namespace Centrabaho.ViewModels
                     LastName = _lastName,
                     Username = _username,
                     Email = _email,
-                    Password = _password
+                    Password = _password,
+                    ContactNumber = _contactNumber,
+                    ProfileImageUrl = "sampleprofile.png"
                 });
                 await Shell.Current.GoToAsync("//loginpage");
                 return;
