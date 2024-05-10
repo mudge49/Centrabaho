@@ -14,6 +14,7 @@ namespace Centrabaho.Services
             _connect = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             _connect.CreateTableAsync<UserData>().Wait();
             _connect.CreateTableAsync<PostData>().Wait();
+            _connect.CreateTableAsync<PostImage>().Wait();
         }
 
         public async Task<List<PostData>> GetPosts()

@@ -2,19 +2,14 @@ using Centrabaho.ViewModels;
 
 namespace Centrabaho.Views;
 
-public partial class CreatePostPage : ContentPage
+public partial class ProfilePage : ContentPage
 {
-	public CreatePostPage()
+	public ProfilePage()
 	{
-        var viewmodel = new CreatePostViewModel();
+        InitializeComponent();
+        var viewmodel = new ProfilePageViewModel();
         BindingContext = viewmodel;
-		InitializeComponent();
 	}
-
-    private void createPostBtn_Create(object sender, EventArgs e)
-    {
-        _ = navigateTo("homepage");
-    }
 
     private async Task navigateTo(string url)
     {

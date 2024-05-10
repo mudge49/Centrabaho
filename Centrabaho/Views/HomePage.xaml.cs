@@ -22,6 +22,16 @@ namespace Centrabaho.Views
         {
             _ = navigateTo("createpostpage");
         }
+
+        private void profilepageBtn(object sender, EventArgs e)
+        {
+            _ = navigateTo("profilepage");
+        }
+
+        private void homepageBtn(object sender, EventArgs e)
+        {
+            _ = navigateTo("homepage");
+        }
     }
 
 }

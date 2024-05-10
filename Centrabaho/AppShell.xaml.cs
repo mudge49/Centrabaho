@@ -13,7 +13,7 @@ namespace Centrabaho
             Routing.RegisterRoute("registerpage", typeof(RegisterPage));
             Routing.RegisterRoute("createpostpage", typeof(CreatePostPage));
             Routing.RegisterRoute("adminpage", typeof(AdminPage));
-            Routing.RegisterRoute("postdetailspage", typeof(PostDetailsPage));
+            Routing.RegisterRoute("profilepage", typeof(ProfilePage));
 
         }
     }

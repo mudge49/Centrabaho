@@ -28,8 +28,27 @@ namespace Centrabaho.Models
         [Column("timestamp")]
         public DateTime Timestamp { get; set; }
 
+        [Column("payamount")]
+        public int PayAmount { get; set; }
+
+        public string ContactNumber { get; set; }
+
+        public string Email { get; set; }
+
         public string ProfilePictureUrl { get; set; }
 
         public string Username {  get; set; }
+
+        [Column("serializedImagePaths")]
+        public string SerializedImagePaths { get; set; }
+
+        [Ignore]
+        public List<string> ImagePaths
+        {
+            get => !string.IsNullOrWhiteSpace(SerializedImagePaths)
+                ? SerializedImagePaths.Split(';').ToList()
+                : new List<string>();
+            set => SerializedImagePaths = string.Join(";", value);
+        }
     }
 }

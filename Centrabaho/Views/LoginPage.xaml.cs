@@ -35,4 +35,10 @@ public partial class LoginPage : ContentPage
 	{
 		await Shell.Current.GoToAsync(path);
 	}
+
+    private void loginBtn_Clicked(object sender, EventArgs e)
+    {
+        usernameEntry.Text = string.Empty;
+        passwordEntry.Text = string.Empty;
+    }
 }

@@ -5,26 +5,161 @@
              x:Class="Centrabaho.Views.CreatePostPage"
              Shell.NavBarIsVisible="False"
              Title="CreatePostPage">
-    <ContentPage.BindingContext>
-        <local:CreatePostViewModel />
-    </ContentPage.BindingContext>
 
-    <ScrollView>
-        <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="15" Padding="20">
+    <Grid ColumnDefinitions="Auto,*">
+        <VerticalStackLayout Grid.Column="0"  
+                     Padding="10"
+                     BackgroundColor="#8DECB4">
             
-            <Entry Placeholder="Title"
-                   Text="{Binding Title}" 
-                   FontSize="Title"/>
+            <Label Text="CENTRABAHO"
+                   TextColor="#141E46"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,15,0,0"
+                   VerticalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   FontSize="30"
+                   FontFamily="TheBoldFont"/>
 
-            <Editor Placeholder="Description"
-                    Text="{Binding Description}"
-                    MinimumHeightRequest="100"
-                    AutoSize="TextChanges" />
+            
+            <Button HeightRequest="70" 
+                    Margin="0,50,0,10" 
+                    BackgroundColor="Transparent" 
+                    ImageSource="home.png"
+                    Clicked="homepageBtn"
+                    TextColor="Black" 
+                    HorizontalOptions="StartAndExpand"
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    FontFamily="TheBoldFont"
+                    Text="Home"/>
 
-            <Button Text="Create Post"
-                    Command="{Binding CreatePostCommand}"
-                    Clicked="createPostBtn_Clicked"/>
+            <Button Text="Profile" 
+                    Margin="0,10,0,10"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="black"
+                    FontSize="Title"
+                    FontFamily="TheBoldFont"
+                    FontAttributes="Bold"
+                    HeightRequest="70"
+                    Clicked="profilepageBtn"
+                    ImageSource="profile.png"/>
 
+            <Button Text="Create Post" 
+                    HeightRequest="70"
+                    HorizontalOptions="StartAndExpand"
+                    Margin="0,10,0,10"
+                    TextColor="Black" 
+                    FontFamily="TheBoldFont"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    FontSize="Title"
+                    ImageSource="createpost.png"
+                    Clicked="createpostBtn"/>
+
+            <Button Text="Sign Out" 
+                    Margin="0,10,0,10" 
+                    HeightRequest="70" 
+                    TextColor="Black" 
+                    FontFamily="TheBoldFont"
+                    FontSize="Title"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    ImageSource="signout.png"
+                    Command="{Binding SignOutCommand}" 
+                    HorizontalOptions="StartAndExpand"/>
         </VerticalStackLayout>
-    </ScrollView>
+
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout >
+                <Frame BackgroundColor="#41B06E" 
+                   CornerRadius="0">
+                    <Label Text="Create a Job post"
+                       FontAttributes="Bold" 
+                       TextColor="GhostWhite" 
+                       FontFamily="TheBoldFont" 
+                       FontSize="30"/>
+                </Frame>
+                <ScrollView Grid.Column="1">
+                    <VerticalStackLayout VerticalOptions="StartAndExpand" Spacing="10" Padding="10">
+
+
+                        <Label Text="Title"
+                           FontSize="Subtitle"
+                           FontAttributes="Bold"/>
+
+                        <Border StrokeThickness="2"
+                            Stroke="Black">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10" />
+                            </Border.StrokeShape>
+                            
+                            <Entry x:Name="titleEntry"
+                                   Placeholder="Title"
+                                   Text="{Binding Title}" 
+                                   FontSize="Title"/>
+                        </Border>
+
+                        <Label Text="Description"
+                           FontSize="Subtitle"
+                           FontAttributes="Bold"/>
+
+                        <Border StrokeThickness="2"
+                            Stroke="Black">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10" />
+                            </Border.StrokeShape>
+                            
+                            <Editor x:Name="descriptionEditor"
+                                    Placeholder="Description"
+                                    Text="{Binding Description}"
+                                    MinimumHeightRequest="100"
+                                    AutoSize="TextChanges" />
+                        </Border>
+
+                        <HorizontalStackLayout>
+                            <Label Text="Pay Offer"
+                                   FontSize="Subtitle"
+                                   Margin="0,0,10,0"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="CenterAndExpand"/>
+                            <Border StrokeThickness="2"
+                                    Stroke="Black"
+                                    WidthRequest="150"
+                                    HorizontalOptions="Start">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="payAmountEntry"
+                                       Grid.Column="1"
+                                       Text="{Binding PayAmount}"
+                                       Keyboard="Numeric"/>
+                            </Border>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <Button BorderColor="#141E46" BorderWidth="2" BackgroundColor="#41B06E" Text="Add Image"  HorizontalOptions="StartAndExpand" Command="{Binding AddImageCommand}" Margin="0,0,10,0"/>
+                            <CollectionView ItemsLayout="HorizontalList" HorizontalOptions="Start" ItemsSource="{Binding ImageUrls}" Margin="0,0,10,0"  VerticalOptions="CenterAndExpand" HeightRequest="100">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding}" HeightRequest="100" WidthRequest="100"/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </HorizontalStackLayout>
+                        
+
+                        
+
+                        <Button Text="Create Post"
+                            Command="{Binding CreatePostCommand}"
+                            Clicked="createPostBtn_Create"/>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+    
+    
 </ContentPage>

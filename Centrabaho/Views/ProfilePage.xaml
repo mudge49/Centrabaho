@@ -1,16 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Centrabaho.ViewModels"
+             x:Class="Centrabaho.Views.ProfilePage"
              Shell.NavBarIsVisible="False"
-             x:Class="Centrabaho.Views.HomePage"
-             Title="HomePage">
+             Title="ProfilePage">
     <Grid ColumnDefinitions="Auto,*">
-        <Border BackgroundColor="#8DECB4" Stroke="#8DECB4">
-            <VerticalStackLayout Grid.Column="0"  
-                             Padding="10">
-
-                <Label Text="CENTRABAHO"
+        <VerticalStackLayout Grid.Column="0"  
+                             Padding="10"
+                             BackgroundColor="#8DECB4">
+            <Label Text="CENTRABAHO"
                    TextColor="#141E46"
                    HorizontalOptions="CenterAndExpand"
                    Margin="0,15,0,0"
@@ -20,19 +18,19 @@
                    FontFamily="TheBoldFont"/>
 
 
-                <Button HeightRequest="70" 
+            <Button HeightRequest="70" 
                     Margin="0,50,0,10" 
                     BackgroundColor="Transparent" 
                     ImageSource="home.png"
-                    TextColor="Black" 
                     Clicked="homepageBtn"
+                    TextColor="Black" 
                     HorizontalOptions="StartAndExpand"
                     FontAttributes="Bold"
                     FontSize="Title"
                     FontFamily="TheBoldFont"
                     Text="Home"/>
 
-                <Button  Text="Profile" 
+            <Button  Text="Profile" 
                      Margin="0,10,0,10"
                      BackgroundColor="Transparent"
                      HorizontalOptions="StartAndExpand"
@@ -44,7 +42,7 @@
                      Clicked="profilepageBtn"
                      ImageSource="profile.png"/>
 
-                <Button Text="Create Post" 
+            <Button Text="Create Post" 
                     HeightRequest="70"
                     HorizontalOptions="StartAndExpand"
                     Margin="0,10,0,10"
@@ -56,7 +54,7 @@
                     ImageSource="createpost.png"
                     Clicked="createpostBtn"/>
 
-                <Button Text="Sign Out" 
+            <Button Text="Sign Out" 
                     Margin="0,10,0,10" 
                     HeightRequest="70" 
                     TextColor="Black" 
@@ -69,21 +67,84 @@
                     HorizontalOptions="StartAndExpand"/>
 
 
-                <VerticalStackLayout HeightRequest="200"/>
+            <VerticalStackLayout HeightRequest="200"/>
 
-            </VerticalStackLayout>
-        </Border>
+        </VerticalStackLayout>
         <ScrollView Grid.Column="1">
-            <Grid RowDefinitions="Auto,Auto,*">
+            <VerticalStackLayout>
                 <Frame BackgroundColor="#41B06E" 
-                       CornerRadius="0" />
-                <Label Text="Home" FontAttributes="Bold" 
+                   CornerRadius="0">
+                    <Label Text="Profile"
+                       FontAttributes="Bold" 
                        TextColor="GhostWhite" 
                        FontFamily="TheBoldFont" 
-                       Padding="10" 
-                       FontSize="50"/>
+                       FontSize="30"/>
+                </Frame>
+                <Border Margin="30" BackgroundColor="#FFF5E0" Padding="50">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                    </Border.StrokeShape>
+                    <Border Stroke="#41B06E" BackgroundColor="#41B06E" Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                        </Border.StrokeShape>
+                        <HorizontalStackLayout>
 
-                <CollectionView Grid.Row="2" ItemsSource="{Binding Posts}">
+                            <VerticalStackLayout>
+                                <!-- Profile Picture -->
+                                <Border Stroke="#141E46" StrokeThickness="2">
+                                    <ImageButton Command="{Binding UploadImageCommand}" Source="{Binding ProfileImagePath}" WidthRequest="200" HeightRequest="200" Aspect="AspectFill" />
+                                </Border>
+                                <!-- Username -->
+                                <Border Stroke="#141E46" StrokeThickness="2" BackgroundColor="#8DECB4" Margin="0,10,0,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10,10,10,10"/>
+                                    </Border.StrokeShape>
+                                    <Label Text="{Binding Username}"
+                                       FontSize="Medium"
+                                       HorizontalOptions="Center"
+                                       Margin="0,10,0,10"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <Border Margin="10,0,0,0" WidthRequest="490" StrokeThickness="2" Stroke="#141E46" BackgroundColor="#8DECB4">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10"/>
+                                </Border.StrokeShape>
+                                <VerticalStackLayout Padding="10" >
+
+                                    <Label Text="Name"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"/>
+                                    <Label Text="{Binding Name}"
+                                   FontSize="Medium"
+                                   Margin="0,0,0,20"/>
+                                    <!-- Email -->
+                                    <Label Text="Email"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"/>
+                                    <Label Text="{Binding Email}"
+                                   FontSize="Medium"
+                                   Margin="0,0,0,20"/>
+
+                                    <!-- Contact Number -->
+                                    <Label Text="Contact Number"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"/>
+                                    <Label Text="{Binding ContactNumber}"
+                                   FontSize="Medium"
+                                   Margin="0,0,0,10"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                        </HorizontalStackLayout>
+                    </Border>
+                </Border>
+                <Label Text="-Your Job Postings-"
+                       FontSize="Large"
+                       FontFamily="TheBoldFont"
+                       HorizontalOptions="CenterAndExpand"/>
+                <CollectionView ItemsSource="{Binding Posts}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <VerticalStackLayout>
@@ -92,8 +153,7 @@
                                         <RoundRectangle CornerRadius="10"/>
                                     </Border.StrokeShape>
                                     <Grid HorizontalOptions="Start" ColumnDefinitions="Auto,*">
-                                        <Grid Grid.Column="0" RowDefinitions="Auto,23,25,Auto" Margin="0,0,20,0">
-
+                                        <Grid Grid.Column="0" RowDefinitions="Auto,23,25" Margin="0,0,20,0">
                                             <Image Grid.Row="0"
                                                    Source="{Binding ProfilePictureUrl}"
                                                    WidthRequest="80"
@@ -103,28 +163,14 @@
                                                    HorizontalOptions="CenterAndExpand"/>
 
                                             <Label Text="{Binding Username}"
-                                                       FontSize="Micro"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       Grid.Row="1"/>
+                                                   FontSize="Micro"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   Grid.Row="1"/>
                                             <Label Text="{Binding Timestamp, StringFormat='{0:MMM dd, yyyy}'}"
-                                                       FontSize="10"
-                                                       Grid.Row="2"
-                                                       TextColor="LightSlateGray"
-                                                       HorizontalOptions="CenterAndExpand"/>
-                                            <HorizontalStackLayout Grid.Row="3">
-                                                <ImageButton Source="phone.png"
-                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomeViewModel}}, Path=CopyContactNumberCommand}"
-                                                             CommandParameter="{Binding ContactNumber}"
-                                                             WidthRequest="5"
-                                                             HeightRequest="5"
-                                                             Padding="10"/>
-                                                <ImageButton Source="email.png"
-                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomeViewModel}}, Path=CopyEmailCommand}"
-                                                             CommandParameter="{Binding Email}"
-                                                             WidthRequest="5"
-                                                             HeightRequest="5"
-                                                             Padding="10"/>
-                                            </HorizontalStackLayout>
+                                                   FontSize="10"
+                                                   Grid.Row="2"
+                                                   TextColor="LightSlateGray"
+                                                   HorizontalOptions="CenterAndExpand"/>
                                         </Grid>
 
                                         <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*,Auto">
@@ -141,10 +187,10 @@
                                             <Label Text="{Binding Description}"
                                                    FontSize="Body"
                                                    Grid.Row="2"/>
-                                            <CollectionView Grid.Row="3" ItemsLayout="HorizontalList"  ItemsSource="{Binding ImagePaths}" HeightRequest="200">
+                                            <CollectionView Grid.Row="3" ItemsLayout="HorizontalList" ItemsSource="{Binding ImagePaths}" HeightRequest="200">
                                                 <CollectionView.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Image Source="{Binding}" Aspect="AspectFit" HeightRequest="150" WidthRequest="150"/>
+                                                        <Image Source="{Binding}" Aspect="AspectFill" HeightRequest="150" WidthRequest="150"/>
                                                     </DataTemplate>
                                                 </CollectionView.ItemTemplate>
                                             </CollectionView>
@@ -166,20 +212,16 @@
 
                                                 </HorizontalStackLayout>
                                             </Border>
-
-
                                         </Grid>
-
-
                                     </Grid>
                                 </Border>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </Grid>
+            </VerticalStackLayout>
+            
         </ScrollView>
-        
-    </Grid>
 
+    </Grid>
 </ContentPage>

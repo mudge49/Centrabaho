@@ -20,39 +20,62 @@ namespace Centrabaho.ViewModels
 
         public ICommand HomeCommand { get; private set; }
         public ICommand SignOutCommand { get;}
-        public ICommand GoToPostDetailCommand { get; private set; }
+        public ICommand CopyContactNumberCommand { get; private set; }
+        public ICommand CopyEmailCommand { get; private set; }
 
         public HomeViewModel()
         {
             HomeCommand = new Command(async () => await LoadPosts());
-            SignOutCommand = new Command(async () => await OnLogout());
-            GoToPostDetailCommand = new Command<int>(async (postId) => await ViewPost(postId));
+            SignOutCommand = new Command(async () => await OnLogout()); 
+            CopyContactNumberCommand = new Command(async (contactNumber) => await CopyContactNumber(contactNumber));
+            CopyEmailCommand = new Command(async (email) => await CopyEmail(email));
         }
 
-
-        //Retrieves all records from PostData and facilitates the loading of posts
         public async Task LoadPosts()
         {
-            var posts = await new LocalDbService().GetPosts(); // Implement this method to fetch from SQLite
+            var posts = await new LocalDbService().GetPosts();
             Posts.Clear();
             foreach (var post in posts)
             {
+                post.ImagePaths = !string.IsNullOrWhiteSpace(post.SerializedImagePaths)
+                    ? post.SerializedImagePaths.Split(';').ToList()
+                    : new List<string>();
+
+                // Additional user information assignments (if needed)
                 var user = await new LocalDbService().GetUserById(post.UserId);
                 post.Username = user?.Username ?? "Unknown User";
                 post.ProfilePictureUrl = user?.ProfileImageUrl ?? "sampleprofile.png";
+                post.ContactNumber = user?.ContactNumber;
+                post.Email = user?.Email;
+
                 Posts.Add(post);
             }
         }
 
-        public async Task OnLogout()
+        private async Task CopyContactNumber(object contactNumber)
+        {
+            var contactStr = contactNumber as string;
+            if (!string.IsNullOrEmpty(contactStr))
+            {
+                await Clipboard.SetTextAsync(contactStr);
+            }
+            await Shell.Current.DisplayAlert("Contact Number Copied", "Successfully copied contact number", "Okay");
+        }
+
+        private async Task CopyEmail(object email)
+        {
+            var emailStr = email as string;
+            if (!string.IsNullOrEmpty(emailStr))
+            {
+                await Clipboard.SetTextAsync(emailStr);
+            }
+            await Shell.Current.DisplayAlert("Email Copied", "Successfully copied email adress", "Okay");
+        }
+
+        private async Task OnLogout()
         {
             App.CurrentUserId = 0;
             await Shell.Current.GoToAsync("//loginpage"); // Adjust the route based on your routing setup
-        }
-
-        public async Task ViewPost(int postId)
-        {
-            await Shell.Current.GoToAsync($"postdetailspage?PostId={postId}");
         }
     }
 }

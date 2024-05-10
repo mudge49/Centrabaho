@@ -33,8 +33,8 @@
         Route="adminpage"/>
 
     <ShellContent
-        Title="PostDetailsPage"
-        ContentTemplate="{DataTemplate local:PostDetailsPage}"
-        Route="postdetailspage"/>
+        Title="ProfilePage"
+        ContentTemplate="{DataTemplate local:ProfilePage}"
+        Route="profilepage"/>
 
 </Shell>
