@@ -19,7 +19,7 @@
                    HorizontalOptions="CenterAndExpand"
                    TextColor="#141E46"
                    FontFamily="TheBoldFont"/>
-            <Label Text="Online Job Bulletin" 
+            <Label Text="Job Posting Bulletin" 
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    TextColor="#141E46"

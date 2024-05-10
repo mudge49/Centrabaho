@@ -44,7 +44,7 @@
                      Clicked="profilepageBtn"
                      ImageSource="profile.png"/>
 
-                <Button Text="Post Request" 
+                <Button Text="Create Post" 
                     HeightRequest="70"
                     HorizontalOptions="StartAndExpand"
                     Margin="0,10,0,10"

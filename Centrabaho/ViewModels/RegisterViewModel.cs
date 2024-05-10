@@ -132,6 +132,42 @@ namespace Centrabaho.ViewModels
 
             else if (_password == _confirmPassword)
             {
+                if(_firstName==null)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Okay");
+                    return;
+                }
+
+                if (_lastName == null)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Okay");
+                    return;
+                }
+
+                if (_username == null)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Okay");
+                    return;
+                }
+
+                if (_email == null)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Okay");
+                    return;
+                }
+
+                if (_password == null)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Okay");
+                    return;
+                }
+
+                if (_confirmPassword == null)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Okay");
+                    return;
+                }
+
                 await new LocalDbService().Create(new UserData
                 {
                     FirstName = _firstName,

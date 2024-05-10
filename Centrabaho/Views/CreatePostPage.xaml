@@ -45,7 +45,7 @@
                     Clicked="profilepageBtn"
                     ImageSource="profile.png"/>
 
-            <Button Text="Post Request" 
+            <Button Text="Create Post" 
                     HeightRequest="70"
                     HorizontalOptions="StartAndExpand"
                     Margin="0,10,0,10"
@@ -74,7 +74,7 @@
             <VerticalStackLayout >
                 <Frame BackgroundColor="#41B06E" 
                    CornerRadius="0">
-                    <Label Text="Create a Job Request"
+                    <Label Text="Create a Job Post"
                        FontAttributes="Bold" 
                        TextColor="GhostWhite" 
                        FontFamily="TheBoldFont" 
@@ -151,7 +151,7 @@
 
                         
 
-                        <Button Text="Create Request"
+                        <Button Text="Create Post"
                             Command="{Binding CreatePostCommand}"
                             Clicked="createPostBtn_Create"/>
 
