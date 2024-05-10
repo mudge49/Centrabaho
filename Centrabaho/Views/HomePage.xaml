@@ -44,7 +44,7 @@
                      Clicked="profilepageBtn"
                      ImageSource="profile.png"/>
 
-                <Button Text="Create Post" 
+                <Button Text="Post Request" 
                     HeightRequest="70"
                     HorizontalOptions="StartAndExpand"
                     Margin="0,10,0,10"
@@ -98,7 +98,7 @@
                                                    Source="{Binding ProfilePictureUrl}"
                                                    WidthRequest="80"
                                                    HeightRequest="80"
-                                                   Aspect="AspectFill"
+                                                   Aspect="AspectFit"
                                                    VerticalOptions="CenterAndExpand"
                                                    HorizontalOptions="CenterAndExpand"/>
 
